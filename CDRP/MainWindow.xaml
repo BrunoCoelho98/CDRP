@@ -16,7 +16,7 @@
         <TextBlock Text="Choose Icon:" Margin="10,19,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <!-- Caixa de texto para mostrar o jogo que está sendo lido -->
         <TextBlock Text="Current Game:" Margin="360,10,4,0" VerticalAlignment="Top" FontWeight="Bold" Height="20"/>
-        <TextBox Name="CurrentGameTextBox" Margin="360,40,10,0" VerticalAlignment="Top" Height="30" IsReadOnly="True" TextChanged="CurrentGameTextBox_TextChanged"/>
+        <TextBox Name="CurrentGameTextBox" Margin="360,40,10,0" VerticalAlignment="Top" Height="30" IsReadOnly="False"/>
         <ComboBox Name="IconComboBox" Margin="10,40,387,0" VerticalAlignment="Top" Height="30">
             <!-- Adicione os ícones disponíveis aqui -->
             <ComboBoxItem Content="Icon1" />

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Umineko no Naku Koro ni",
+    "processName": "Umineko no Naku Koro ni.exe",
+    "windowTitle": "Umineko no Naku Koro ni",
+    "icon": "umineko1.png",
+    "customTitle": "Umineko: Quando as gaivotas choram"
+  },
+  {
+    "name": "WHITE ALBUM: Memories like Falling Snow",
+    "processName": "WHITE ALBUM Memories like Falling Snow",
+    "windowTitle": "WHITE ALBUM: Memories like Falling Snow [ver 1.0]",
+    "icon": "white_album1.png",
+    "customTitle": "WHITE ALBUM: Memories like Falling Snow"
+  }
+]
