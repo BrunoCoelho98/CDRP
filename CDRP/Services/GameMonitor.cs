@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace CDRP.Services
 {
-    class GameMonitor
+    public class GameMonitor
     {
         public List<GameInfo> gameList { get; private set; }
 
@@ -36,16 +36,16 @@ namespace CDRP.Services
         }
 
         // Verify if the name of the process is in the list of games
-        public bool IsGame(Process process)
+        public GameInfo IsGame(Process process)
         {
             foreach(GameInfo game in gameList)
             {
                 if (game.ProcessName.Equals(process.ProcessName, StringComparison.OrdinalIgnoreCase))
                 {
-                    return true;
+                    return game;
                 }
             }
-            return false;
+            return null;
         }
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CDRP.Models
 {
-    class GameInfo
+    public class GameInfo
     {
         public string Name { get; set; }
         public string ProcessName { get; set; }
