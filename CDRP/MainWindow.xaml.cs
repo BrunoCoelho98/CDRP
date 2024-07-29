@@ -67,7 +67,7 @@ namespace CDRP
                 return;
             }
             UpdateGameName(game.Name);
-            // RunningTimeTextBox.Text = DateTime.Now.ToString(); // Placeholder for actual running time
+            RunningTimeTextBox.Text = DateTime.Now.ToString(); // Placeholder for actual running time
             // IconComboBox.SelectedItem = game.Icon;
             // SelectedIconImage.Source = new BitmapImage(new Uri($"pack://application:,,,/Resources/{game.Icon}"));
         }
@@ -75,7 +75,13 @@ namespace CDRP
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Trace.WriteLine("Button Clicked");
+           
             GameInfo currentGame = windowMonitor.CheckRunningGame();
+            if (currentGame != null)
+            {
+                Trace.WriteLine($"Current Game: {currentGame.Name}");
+                Trace.WriteLine($"Current Game icon {currentGame.Icon}");
+            }
             UpdateUI(currentGame);
             UpdateDiscordStatus(currentGame);
         }

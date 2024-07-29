@@ -35,18 +35,25 @@ namespace CDRP.Services
 
         public void UpdateDiscordStatus(GameInfo game)
         {
-            client.SetPresence(new RichPresence()
+            if (game != null)
             {
-                Details = game.Name,
-                State = game.CustomTitle,
-                Assets = new Assets()
+                client.SetPresence(new RichPresence()
                 {
-                    LargeImageKey = game.Icon,
-                    LargeImageText = game.Name,
-                    SmallImageKey = "CDRP_icon",
-                    SmallImageText = "CDRP"
-                }
-            });
+                    Details = game.Name,
+                    // State will display the time of which the game is running
+
+                    State = "Running",
+                    Assets = new Assets()
+                    {
+                        // delete the last 4 characters of the icon name (for some reason the icon name is being saved with the extension)
+                        LargeImageKey = game.Icon.Substring(0, game.Icon.Length - 4),
+                        LargeImageText = game.Name,
+                        SmallImageKey = "cdrp_icon",
+                        SmallImageText = "CDRP"
+                    }
+                }); 
+
+            }
         }
 
         public void Dispose()
