@@ -13,7 +13,7 @@ namespace CDRP.Services
 {
     public class GameMonitor
     {
-        public List<GameInfo> gameList { get; private set; }
+        public List<GameInfo> gameList { get; set; }
 
         public GameMonitor()
         {
@@ -22,28 +22,37 @@ namespace CDRP.Services
 
         private void LoadGameList()
         {
-            try
-            {
-                string json = File.ReadAllText("games.json");
-                gameList = JsonConvert.DeserializeObject<List<GameInfo>>(json);
-                Trace.WriteLine("Game list loaded");
+            string filePath = "games.json"; // Use the relative path to the JSON file
 
-            }
-            catch (Exception e)
+            // Check if the file exists
+            if (!File.Exists(filePath))
             {
-                Trace.WriteLine("Error loading game list: " + e.Message);
+                Console.WriteLine("JSON file not found: " + filePath);
+                return;
             }
+
+            // Read and print the JSON content for debugging
+            string json = File.ReadAllText(filePath);
+            Console.WriteLine("JSON content read: " + json);
+
+            // Deserialize the JSON content
+            gameList = JsonConvert.DeserializeObject<List<GameInfo>>(json);
+
         }
 
         // Verify if the name of the process is in the list of games
         public GameInfo IsGame(Process process)
         {
-            foreach(GameInfo game in gameList)
+            // normalize process name
+            string processName = process.ProcessName.Trim().ToLower();
+            foreach (GameInfo game in gameList)
             {
-                if (game.ProcessName.Equals(process.ProcessName, StringComparison.OrdinalIgnoreCase))
+                string gameName = game.ProcessName.Trim().ToLower();
+                if (gameName.Equals(processName, StringComparison.OrdinalIgnoreCase))
                 {
                     return game;
                 }
+                Trace.WriteLine($"{processName} != {gameName}");  
             }
             return null;
         }

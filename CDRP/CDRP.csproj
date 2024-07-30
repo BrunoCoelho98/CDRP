@@ -9,7 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <None Remove="games.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="games.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Utils\" />
     <Folder Include="UI\" />
   </ItemGroup>
