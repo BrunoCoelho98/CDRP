@@ -27,13 +27,13 @@ namespace CDRP.Services
             // Check if the file exists
             if (!File.Exists(filePath))
             {
-                Console.WriteLine("JSON file not found: " + filePath);
+                Trace.WriteLine("JSON file not found: " + filePath);
                 return;
             }
 
             // Read and print the JSON content for debugging
             string json = File.ReadAllText(filePath);
-            Console.WriteLine("JSON content read: " + json);
+            Trace.WriteLine("JSON content read: " + json);
 
             // Deserialize the JSON content
             gameList = JsonConvert.DeserializeObject<List<GameInfo>>(json);
