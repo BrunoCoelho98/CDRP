@@ -45,8 +45,8 @@ namespace CDRP.Services
                     State = "Running",
                     Assets = new Assets()
                     {
-                        // delete the last 4 characters of the icon name (for some reason the icon name is being saved with the extension)
-                        LargeImageKey = game.Icon.Substring(0, game.Icon.Length - 4),
+                        
+                        LargeImageKey = game.Icon,
                         LargeImageText = game.Name,
                         SmallImageKey = "cdrp_icon",
                         SmallImageText = "CDRP"

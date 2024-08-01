@@ -41,18 +41,16 @@ namespace CDRP.Services
         }
 
         // Verify if the name of the process is in the list of games
-        public GameInfo IsGame(Process process)
+        public GameInfo IsGame(WindowInfo window)
         {
             // normalize process name
-            string processName = process.ProcessName.Trim().ToLower();
             foreach (GameInfo game in gameList)
             {
-                string gameName = game.ProcessName.Trim().ToLower();
-                if (gameName.Equals(processName, StringComparison.OrdinalIgnoreCase))
+                string gameName = game.Name.Trim().ToLower();
+                if (gameName.Equals(window.Title.Trim().ToLower(), StringComparison.OrdinalIgnoreCase))
                 {
                     return game;
                 }
-                Trace.WriteLine($"{processName} != {gameName}");  
             }
             return null;
         }
