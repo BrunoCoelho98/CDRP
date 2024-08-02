@@ -46,10 +46,16 @@ namespace CDRP.Services
             // normalize process name
             foreach (GameInfo game in gameList)
             {
-                string gameName = game.Name.Trim().ToLower();
+                string gameName = game.WindowTitle.Trim().ToLower();
                 if (gameName.Equals(window.Title.Trim().ToLower(), StringComparison.OrdinalIgnoreCase))
                 {
-                    return game;
+                    string gameProcess = game.ProcessName.Trim().ToLower();
+                    string windowProcess = window.ProcessName.Trim().ToLower();
+                    if (gameProcess.Equals(windowProcess, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return game;
+                    }
+                    Trace.WriteLine($"{windowProcess} != {gameProcess}");
                 }
             }
             return null;

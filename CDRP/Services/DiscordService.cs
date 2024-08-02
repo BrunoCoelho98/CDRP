@@ -33,28 +33,29 @@ namespace CDRP.Services
             client.Initialize();
         }
 
-        public void UpdateDiscordStatus(GameInfo game)
+        public void UpdateDiscordStatus(GameInfo game, string playingTime, string pausedTime)
         {
             if (game != null)
             {
                 client.SetPresence(new RichPresence()
                 {
                     Details = game.Name,
-                    // State will display the time of which the game is running
-
                     State = "Running",
                     Assets = new Assets()
                     {
-                        
                         LargeImageKey = game.Icon,
                         LargeImageText = game.Name,
                         SmallImageKey = "cdrp_icon",
-                        SmallImageText = "CDRP"
+                        SmallImageText = $"Playing: {playingTime}\nPaused: {pausedTime}"
                     }
-                }); 
-
+                });
+            }
+            else
+            {
+                client.ClearPresence();
             }
         }
+
 
         public void Dispose()
         {

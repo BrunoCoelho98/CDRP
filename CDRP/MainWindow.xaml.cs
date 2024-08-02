@@ -25,12 +25,14 @@ namespace CDRP
         private WindowMonitor windowMonitor;
         private DispatcherTimer dispatcherTimer;
         private DiscordService discordService;
+        private GameTimeTracker gameTimeTracker;
         public MainWindow()
         {
             InitializeComponent();
             gameMonitor = new GameMonitor();
             windowMonitor = new WindowMonitor();
             discordService = new DiscordService();
+            gameTimeTracker = new GameTimeTracker(gameMonitor);
             StartMonitoring();
         }
 
@@ -55,7 +57,7 @@ namespace CDRP
         private void UpdateDiscordStatus(GameInfo game)
         {
             // Update the Rich Presence with your desired information
-            discordService.UpdateDiscordStatus(game);
+            //discordService.UpdateDiscordStatus(game);
         }
 
         private void UpdateUI(GameInfo game)
