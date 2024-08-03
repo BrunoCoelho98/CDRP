@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CDRP.Models;
+using CDRP.Services;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Threading;
-using CDRP.Models;
-using CDRP.Services;
 
 public class GameTimeTracker
 {
@@ -61,13 +59,17 @@ public class GameTimeTracker
 
             Trace.WriteLine($"Playing Time: {FormatTime(PlayingTime)}");
             Trace.WriteLine($"Paused Time: {FormatTime(PausedTime)}");
-            discordService.UpdateDiscordStatus(game, FormatTime(PlayingTime), FormatTime(PausedTime));
         }
     }
 
-    private string FormatTime(TimeSpan time)
+    public string FormatTime(TimeSpan time)
     {
         return $"{time.Hours}h{time.Minutes}m{time.Seconds}s";
+    }
+
+    public bool isGameRunning()
+    {
+        return playingStopwatch.IsRunning;
     }
 
     private WindowInfo GetWindowInfo(IntPtr hwnd)
