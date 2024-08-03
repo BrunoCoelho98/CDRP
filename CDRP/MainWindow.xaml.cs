@@ -69,9 +69,8 @@ namespace CDRP
                 return;
             }
             UpdateGameName(game.Name);
-            RunningTimeTextBox.Text = DateTime.Now.ToString(); // Placeholder for actual running time
+            
             // IconComboBox.SelectedItem = game.Icon;
-            // SelectedIconImage.Source = new BitmapImage(new Uri($"pack://application:,,,/Resources/{game.Icon}"));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -5,28 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CDRP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="600">
-    <Grid>
+        Title="MainWindow" Height="223" Width="617">
+    <Grid Margin="-32,0,0,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="77*"/>
             <RowDefinition Height="65*"/>
         </Grid.RowDefinitions>
-        <Button Click="Button_Click" Width="129" Height="52" Margin="452,22,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1">Click Me</Button>
-        <TextBox Margin="287,35,168,119" />
-        <TextBlock Text="Choose Icon:" Margin="10,19,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button Click="Button_Click" Width="128" Height="52" Margin="479,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1">Update</Button>
+        <TextBlock Text="Choose Icon (TODO):" Margin="62,14,-42,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <!-- Caixa de texto para mostrar o jogo que está sendo lido -->
         <TextBlock Text="Current Game:" Margin="360,10,4,0" VerticalAlignment="Top" FontWeight="Bold" Height="20"/>
         <TextBox Name="CurrentGameTextBox" Margin="360,40,10,0" VerticalAlignment="Top" Height="30" IsReadOnly="False"/>
-        <ComboBox Name="IconComboBox" Margin="10,40,387,0" VerticalAlignment="Top" Height="30">
+        <ComboBox Name="IconComboBox" Margin="62,40,335,0" VerticalAlignment="Top" Height="30">
             <!-- Adicione os ícones disponíveis aqui -->
             <ComboBoxItem Content="Icon1" />
             <ComboBoxItem Content="Icon2" />
             <ComboBoxItem Content="Icon3" />
         </ComboBox>
-        <TextBlock Text="Selected Icon:" Margin="10,103,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <!-- Caixa de texto mostrando há quanto tempo o jogo está rodando -->
-        <TextBlock Text="Game Running Time:" Margin="360,79,56,0" VerticalAlignment="Top" FontWeight="Bold" Height="19"/>
-        <TextBox Name="RunningTimeTextBox" Margin="360,111,10,0" VerticalAlignment="Top" Height="30" IsReadOnly="True"/>
 
     </Grid>
 </Window>
