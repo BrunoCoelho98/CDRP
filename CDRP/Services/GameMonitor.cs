@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CDRP.Models;
+﻿using CDRP.Models;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.IO;
 
 namespace CDRP.Services
 {
@@ -40,7 +34,7 @@ namespace CDRP.Services
 
         }
 
-        // Verify if the name of the process is in the list of games
+        // Verify if the name of the window is in the list of games
         public GameInfo IsGame(WindowInfo window)
         {
             // normalize process name
@@ -51,6 +45,7 @@ namespace CDRP.Services
                 {
                     string gameProcess = game.ProcessName.Trim().ToLower();
                     string windowProcess = window.ProcessName.Trim().ToLower();
+                    // Compare the process name to make sure that it is the actual game running and not a random window with the same name
                     if (gameProcess.Equals(windowProcess, StringComparison.OrdinalIgnoreCase))
                     {
                         return game;

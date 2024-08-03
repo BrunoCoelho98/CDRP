@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CDRP.Models;
 using DiscordRPC;
-using DiscordRPC.Message;
-using CDRP.Models;
+using System.Diagnostics;
 
 namespace CDRP.Services
 {
     internal class DiscordService
     {
         private DiscordRpcClient client;
-        private string clientId = "1267241699982315530";
-
+        private string clientId = Environment.GetEnvironmentVariable("DISCORD_CLIENT_ID");
         public DiscordService()
         {
-            
+
             client = new DiscordRpcClient(clientId);
 
             client.OnReady += (sender, e) =>
@@ -33,20 +26,20 @@ namespace CDRP.Services
             client.Initialize();
         }
 
-        public void UpdateDiscordStatus(GameInfo game, string playingTime, string pausedTime)
+        public void UpdateDiscordStatus(GameInfo game, string playingTime, string pausedTime, string totalTime, bool isRunning)
         {
             if (game != null)
             {
                 client.SetPresence(new RichPresence()
                 {
                     Details = game.Name,
-                    State = "Running",
+                    State = $"Playing for {totalTime}",
                     Assets = new Assets()
                     {
                         LargeImageKey = game.Icon,
                         LargeImageText = game.Name,
                         SmallImageKey = "cdrp_icon",
-                        SmallImageText = $"Playing: {playingTime}\nPaused: {pausedTime}"
+                        SmallImageText = $"Playing time: {playingTime}\n Paused time: {pausedTime}"
                     }
                 });
             }

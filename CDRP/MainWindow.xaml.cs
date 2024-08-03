@@ -1,18 +1,8 @@
 ﻿using CDRP.Models;
 using CDRP.Services;
-using Discord;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 using System.Diagnostics;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace CDRP
 {
@@ -47,24 +37,23 @@ namespace CDRP
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             GameInfo activeGame = windowMonitor.CheckRunningGame();
-            if (activeGame != null)
-            {
-                UpdateUI(activeGame);
-                // UpdateDiscordStatus(activeGame);
-            }
+
+            UpdateUI(activeGame);
+            UpdateDiscordStatus(activeGame);
+
         }
 
         private void UpdateDiscordStatus(GameInfo game)
         {
             // Update the Rich Presence with your desired information
-            //discordService.UpdateDiscordStatus(game);
+            discordService.UpdateDiscordStatus(game, gameTimeTracker.FormatTime(gameTimeTracker.PlayingTime), gameTimeTracker.FormatTime(gameTimeTracker.PausedTime), gameTimeTracker.FormatTime(gameTimeTracker.PlayingTime + gameTimeTracker.PausedTime), gameTimeTracker.isGameRunning());
         }
 
         private void UpdateUI(GameInfo game)
         {
             if (game == null)
             {
-                MessageBox.Show("No Active Game found");
+                // MessageBox.Show("No Active Game found");
                 CurrentGameTextBox.Text = null;
                 return;
             }
@@ -77,7 +66,7 @@ namespace CDRP
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Trace.WriteLine("Button Clicked");
-           
+
             GameInfo currentGame = windowMonitor.CheckRunningGame();
             if (currentGame != null)
             {

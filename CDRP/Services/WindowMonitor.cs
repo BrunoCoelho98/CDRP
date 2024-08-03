@@ -1,6 +1,5 @@
 ﻿using CDRP.Models;
 using CDRP.Services;
-using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -64,17 +63,17 @@ public class WindowMonitor
 
 
     public GameInfo CheckRunningGame()
-        {
-            List<WindowInfo> windowList = GetOpenWindows();
+    {
+        List<WindowInfo> windowList = GetOpenWindows();
 
-            foreach (WindowInfo window in windowList)
+        foreach (WindowInfo window in windowList)
+        {
+            Trace.WriteLine($"{window.Title}");
+            if (gameMonitor.IsGame(window) != null)
             {
-                Trace.WriteLine($"{window.Title}");
-                if (gameMonitor.IsGame(window) != null)
-                {
-                    return gameMonitor.IsGame(window);
-                }
+                return gameMonitor.IsGame(window);
             }
-            return null;
         }
+        return null;
+    }
 }

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CDRP": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DISCORD_CLIENT_ID": "1267241699982315530"
+      }
+    }
+  }
+}
