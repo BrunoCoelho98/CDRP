@@ -59,19 +59,12 @@ namespace CDRP
             }
             UpdateGameName(game.Name);
             
-            // IconComboBox.SelectedItem = game.Icon;
+            // IconComboBox.SelectedItem = game.Icon; (TODO)
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Trace.WriteLine("Button Clicked");
-
             GameInfo currentGame = windowMonitor.CheckRunningGame();
-            if (currentGame != null)
-            {
-                Trace.WriteLine($"Current Game: {currentGame.Name}");
-                Trace.WriteLine($"Current Game icon {currentGame.Icon}");
-            }
             UpdateUI(currentGame);
             UpdateDiscordStatus(currentGame);
         }
@@ -79,7 +72,6 @@ namespace CDRP
         private void UpdateGameName(string gameName)
         {
             CurrentGameTextBox.Text = gameName;
-            // MessageBox.Show($"Game: {gameName}");
         }
 
         protected override void OnClosed(EventArgs e)

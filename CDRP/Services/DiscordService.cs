@@ -23,6 +23,7 @@ namespace CDRP.Services
                 Trace.WriteLine($"Received Update! {e.Presence}");
             };
 
+            // Start connection with Discord
             client.Initialize();
         }
 
@@ -33,6 +34,7 @@ namespace CDRP.Services
                 client.SetPresence(new RichPresence()
                 {
                     Details = game.Name,
+                    // total time = playing time + paused time
                     State = $"Playing for {totalTime}",
                     Assets = new Assets()
                     {
@@ -49,7 +51,7 @@ namespace CDRP.Services
             }
         }
 
-
+        // Terminate Discord connection
         public void Dispose()
         {
             client.Dispose();

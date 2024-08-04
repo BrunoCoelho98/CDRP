@@ -14,19 +14,18 @@ public class WindowMonitor
     [DllImport("user32.dll")]
     private static extern bool EnumWindows(EnumWindowsProc enumProc, IntPtr lParam);
 
-    // Importa a função GetWindowText da API do Windows
+    // Import GetWindowText function from Windows API
     [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
     private static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
-    // Importa a função IsWindowVisible da API do Windows
+    // Import IsWindowVisible function from Windows API
     [DllImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     private static extern bool IsWindowVisible(IntPtr hWnd);
 
-    // Delegate para a função EnumWindows
     private delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
 
-
+    // This function get the title and Process name of all open windows
     private List<WindowInfo> GetOpenWindows()
     {
         List<WindowInfo> openWindows = new List<WindowInfo>();
@@ -57,11 +56,12 @@ public class WindowMonitor
         return openWindows;
     }
 
-    // Importa a função GetWindowThreadProcessId da API do Windows
+    // Import GetWindowThreadProcessId function from Windows API
     [DllImport("user32.dll")]
     private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
 
 
+    // Iterate through all open windows and check if the process is a game, if it is, returns the game
     public GameInfo CheckRunningGame()
     {
         List<WindowInfo> windowList = GetOpenWindows();
