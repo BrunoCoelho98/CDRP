@@ -34,7 +34,7 @@ CDRP is a desktop application that integrates with Discord to display a custom R
 
 ## Usage
 
-1. Game Configuration: Add your games to the games.json file located in the project directory. Each entry should have the game name, process name, window title, icon, and custom title. Example:
+1. Game Configuration: Add your games to the games.json file located in the project directory. Each entry should have the game name, process name, window title and icon. Example:
 
 json
 
